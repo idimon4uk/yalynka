@@ -50,6 +50,8 @@ router.post('/', async (req, res) => {
                     photo = BACKEND_SERVER+"images/tree-ok.png"
                 }
                 bot.sendPhoto(chat.id,photo,text,button,(requestStatus)=>{
+                    res.status(200).json({ status: requestStatus })
+
                     console.log(requestStatus);
                 })
                 
@@ -77,12 +79,13 @@ router.post('/', async (req, res) => {
                 })
                 bot.sendPhoto(message.chat.id,photo,text,button,(requestStatus)=>{
                     console.log(requestStatus);
+                    res.status(200).json({ status: requestStatus })
                 })
             });
         }
 
         // console.log(data,message.from.id)
-        res.status(200).json({ status: 200 })
+        // res.status(200).json({ status: 200 })
     }
     catch (err) {
         console.log(err);
